@@ -90,11 +90,14 @@
     k为模型参数个数，n为样本数量，L为似然函数  
     在L相同的情况下，参数少的模型是好模型  
     [参考](https://blog.csdn.net/yinyu19950811/article/details/60964782)  
-35. 推导logistic损失函数  
+35. 推导logistic损失函数并求导   
+    [参考](https://blog.csdn.net/bitcarmanlee/article/details/51165444)  
 36. CPU和GPU的区别
     CPU的设计基于低延时，擅长处理复杂的逻辑。有大量的控制和缓存单元，用于处理逻辑计算，并降低延时。
     GPU的设计基于高吞吐量，擅长处理简单大量的并发任务。众核(如512核)。有大量的计算单元和少量的控制及缓存单元，缓存单元主要用于合并多个线程对相同数据的请求。
-    [参考](https://www.zhihu.com/question/19903344)
+    [参考](https://www.zhihu.com/question/19903344)  
+37. 推导softmax损失函数并求导  
+    [参考](https://blog.csdn.net/behamcheung/article/details/71911133) 这篇讲的很清楚  
     
 
 
