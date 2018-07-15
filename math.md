@@ -7,9 +7,9 @@
 min  f(x1,x2,...,xn),
 s.t. hk(x1,x3,...,xn) (k=1,2,...,l)
 把原目标函数  改造成为如下形式的新的目标函数
-![avatar](pic/lglr1.jpg)
+![avatar](pic/lglr1.jpg)   
 式中的hk(x)就是原目标函数f(x)的等式约束条件，而待定系数λk称为拉格朗日乘子。这种方法称为拉格朗日乘子法。
-在极值点处，有
-![avatar](pic/lglr2.jpg)
-![avatar](pic/lglr3.jpg)
+在极值点处，有   
+![avatar](pic/lglr2.jpg)  
+![avatar](pic/lglr3.jpg)   
 共有n+l(注意，这里是字母小写L，不是数字)个方程，足以算出这n+l个变量，此法也称为升维法。
