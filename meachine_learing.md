@@ -100,8 +100,15 @@
     [参考](https://blog.csdn.net/behamcheung/article/details/71911133) 这篇讲的很清楚  
     
 
-
-
+## 损失函数   
+1. 0-1损失函数  
+2. 绝对值损失函数 
+3. log损失函数  来自极大似然估计  
+4. 平方损失函数  最小二乘法，gdbt中回归决策树  
+5. 指数损失函数  adaboost求取每个基学习器的权重时就是最小化指数损失函数。  
+6. Hinge损失函数(铰链损失函数)  SVM使用，只考虑与分割面距离较近的样本
+[参考](https://blog.csdn.net/weixin_37933986/article/details/68488339)   
+[参考](https://blog.csdn.net/fendegao/article/details/79968994)  
 
 
 ## 机器学习最优化方法   
