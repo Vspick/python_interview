@@ -33,7 +33,8 @@
     [这篇讲的最好](https://blog.csdn.net/qq_22238533/article/details/79185969)
 9. LSTM结构推导，为什么比RNN好？  
     ![avatar](pic/lstm.png)   
-    更新门，遗忘门，输出门
+    **修正图片错误：**图上最后a<t>=gate_o\*tanh(c<t>)  图上最后少了一个tanh   
+    更新门，遗忘门，输出门  
     通过记忆单元，使得LSTM可以处理长依赖，解决了梯度消失问题。  
 10. 梯度消失爆炸为什么？
     由于反向传播和链式法则。当网络层数增大时，多个导数相乘，导数大于1时发生梯度爆炸，导数小于1时梯度消失。  
@@ -98,7 +99,73 @@
     [参考](https://www.zhihu.com/question/19903344)  
 37. 推导softmax损失函数并求导  
     [参考](https://blog.csdn.net/behamcheung/article/details/71911133) 这篇讲的很清楚  
-    
+38. L1与L2区别?L1为啥具有稀疏性?L2正则的本质?    
+39. 特征工程  
+40. 模型选择  
+41. CNN最成功的应用是在CV，那为什么NLP和Speech的很多问题也可以用CNN解出来？为什么AlphaGo里也用了CNN？这几个不相关的问题的相似性在哪里？CNN通过什么手段抓住了这个共性？  
+    相关性在于，都存在局部与整体的关系，由低层次的特征经过组合，组成高层次的特征，并且得到不同特征之间的空间相关性。
+    CNN抓住此共性的手段主要有四个：局部连接／权值共享／池化操作／多层次结构。
+42. 什麽样的资料集不适合用深度学习?  
+    数据集太小，数据样本不足时，深度学习相对其它机器学习算法，没有明显优势。
+数据集没有局部相关特性，目前深度学习表现比较好的领域主要是图像／语音／自然语言处理等领域，这些领域的一个共性是局部相关性。图像中像素组成物体，语音信号中音位组合成单词，文本数据中单词组合成句子，这些特征元素的组合一旦被打乱，表示的含义同时也被改变。对于没有这样的局部相关性的数据集，不适于使用深度学习算法进行处理。举个例子：预测一个人的健康状况，相关的参数会有年龄、职业、收入、家庭状况等各种元素，将这些元素打乱，并不会影响相关的结果。
+43. 用贝叶斯机率说明Dropout的原理   
+44. 广义线性模型是怎被应用在深度学习中?  
+    深度学习的每一个节点都可以看做一个广义线性模型，有权重相加以及非线性激活函数
+45. 为什么很多做人脸的Paper会最后加入一个Local Connected Conv？  
+    用Local-Conv的原因是，人脸在不同的区域存在不同的特征（眼睛／鼻子／嘴的分布位置相对固定），当不存在全局的局部特征分布时，Local-Conv更适合特征的提取。  
+46. 何为共线性, 跟过拟合有啥关联?    
+47. ReLu为何好于tanh和sigmoid?    
+    1. rule运算量小，无论是前向还是后向传播   
+    2. 大于0时，导数恒为1，有效抑制tanh和sigmoid的梯度消失问题  
+    3. rule使部分神经元输出为0，相当于简化了网络结构，减少了参数间的依赖关系，缓解了过拟合。   
+48. LSTM为何既有sigmoid激活函数又有tanh激活函数？  
+    二者目的不一样   
+    1. sigmoid 用在了各种gate上，产生0~1之间的值，这个一般只有sigmoid最直接了。  
+    2. tanh 用在了状态和输出上，是对数据的处理，这个用其他激活函数或许也可以。  
+49. 为什么引入非线性激励函数   
+    1. 如果没有非线性激励函数，多个线性函数的叠加还是线性函数    
+    2. 非线性变换相当于对空间进行变换，使得原本线性不可分的问题线性可分。   
+50. CNN常见模型有哪些？  
+    LeNet(1998): 广为流传LeNet诞生于1998年，网络结构比较完整，包括卷积层、pooling层、全连接层，这些都是现代CNN网络的基本组件。被认为是CNN的开端。  
+    AlexNet(2012):   
+         ![avatar](pic/alexnet.jpg)   
+        （1）成功使用ReLU作为CNN的激活函数，并验证其效果在较深的网络超过了Sigmoid，成功解决了Sigmoid在网络较深时的梯度弥散问题。虽然ReLU激活函数在很久之前就被提出了，但是直到AlexNet的出现才将其发扬光大。     
+        （2）训练时使用Dropout随机忽略一部分神经元，以避免模型过拟合。Dropout虽有单独的论文论述，但是AlexNet将其实用化，通过实践证实了它的效果。在AlexNet中主要是最后几个全连接层使用了Dropout。   
+        （3）在CNN中使用重叠的最大池化。此前CNN中普遍使用平均池化，AlexNet全部使用最大池化，避免平均池化的模糊化效果。并且AlexNet中提出让步长比池化核的尺寸小，这样池化层的输出之间会有重叠和覆盖，提升了特征的丰富性。   
+        （4）提出了LRN层，对局部神经元的活动创建竞争机制，使得其中响应比较大的值变得相对更大，并抑制其他反馈较小的神经元，增强了模型的泛化能力。   
+         --------------------------   
+         2012年Geoffrey和他学生Alex在ImageNet的竞赛中，刷新了image classification的记录，一举奠定了deep learning 在计算机视觉中的地位。这次竞赛中Alex所用的结构就被称为作为AlexNet。
+         对比LeNet，AlexNet加入了   
+         （1）非线性激活函数：ReLU；  
+         （2）防止过拟合的方法：Dropout，Data augmentation。  
+          同时，使用多个GPU，LRN归一化层。  
+          其主要的优势有：网络扩大（5个卷积层+3个全连接层+1个softmax层）；   
+          解决过拟合问题（dropout，data augmentation，LRN）；  
+          多GPU加速计算。  
+    VGG(2014):  有VGG-16, VGG-19，分别有16层和19层。   
+         网络中所有的卷积层都是3x3,s=1,same卷积核。  
+         所有池化层都是2x2,s=2的max_pool   
+         优点结构简单，缺点参数较多    
+    Inception： 
+          ![avatar](pic/inception2.jpg)   
+          ![avatar](pic/inception1.jpg)   
+          ![avatar](pic/inception3.jpg)    
+         (1)卷积层共有的一个功能，可以实现通道方向的降维和增维，至于是降还是增，取决于卷积层的通道数（滤波器个数），在Inception v1中1*1卷积用于降维，减少weights大小和feature map维度。   
+         (2)1\*1卷积(network in network)特有的功能，由于1\*1卷积只有一个参数，相当于对原始feature map做了一个scale，并且这个scale还是训练学出来的，无疑会对识别精度有提升。     
+         (3)增加了网络的深度   
+         (4)增加了网络的宽度   
+         (5)同时使用了1\*1，3\*3，5\*5的卷积，增加了网络对尺度的适应性   
+    resnet(2015):  
+          ![avatar](pic/resnet1.png)  
+          ![avatar](pic/resnet2.png)   
+          用于解决随着网络的加深，训练集准确率下降的问题。   
+          ResNet提出了两种mapping：一种是identity mapping，指的就是图1中”弯弯的曲线”(也就是shortcut部分)，另一种residual mapping，指的就是除了”弯弯的曲线“那部分，所以最后的输出是 y=F(x)+x    
+          理论上，对于“随着网络加深，准确率下降”的问题，Resnet提供了两种选择方式，也就是identity mapping和residual mapping，如果网络已经到达最优，继续加深网络，residual mapping将被push为0，只剩下identity mapping，这样理论上网络一直处于最优状态了，网络的性能也就不会随着深度增加而降低了。   
+          
+    [参考1](https://blog.csdn.net/yangdashi888/article/details/77918311)   
+    [参考2](https://blog.csdn.net/u012905422/article/details/53312302)    
+    [参考3](https://blog.csdn.net/qq_14845119/article/details/73648100)(讲了Inception的扩展，有时间看完)   
+    [参考4](https://blog.csdn.net/lanran2/article/details/79057994)
 
 ## 损失函数   
 1. 0-1损失函数  
@@ -156,7 +223,15 @@
 [参考3](https://blog.csdn.net/qq547276542/article/details/78186050)  
 
 
-
+# tensorflow  
+1. 简要介绍tensorflow的计算图   
+    TensorFlow 程序通常被组织成一个构建阶段和一个执行阶段. 在构建阶段, op 的执行步骤 被描述成一个图. 在执行阶段, 使用会话执行执行图中的 op.
+    例如, 通常在构建阶段创建一个图来表示和训练神经网络, 然后在执行阶段反复执行图中的训练 op.
+    使用图 (graph) 来表示计算任务.
+    在被称之为 会话 (Session) 的上下文 (context) 中执行图.
+    使用 tensor 表示数据.
+    通过 变量 (Variable) 维护状态.
+    使用 feed 和 fetch 可以为任意的操作(arbitrary operation) 赋值或者从其中获取数据.
 
 
 
