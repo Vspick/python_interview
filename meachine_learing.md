@@ -167,7 +167,7 @@
     [参考3](https://blog.csdn.net/qq_14845119/article/details/73648100)(讲了Inception的扩展，有时间看完)   
     [参考4](https://blog.csdn.net/lanran2/article/details/79057994)
 
-38. EM算法    
+51. EM算法    
     解决有隐藏变量的极大似然分布问题。比如想知道男生和女生的身高分布。可以分别统计100个男生的身高和100个女生的身高。然后假设符合正态分布，利用极大似然估计求解参数。  
     但，如果一开始不知道这200个人哪些是男生哪些是女生，则问题多了一个隐藏变量。就是样本的性别。这样求解问题既需要估计正太分布参数，有需要估计样本性别。这就是EM算法解决的问题。  
     EM算法分E步和M步。   
@@ -179,6 +179,10 @@
     ![avatar](pic/em1.jpg)   
     详细见参考。   
     [参考](https://www.cnblogs.com/Gabby/p/5344658.html)  
+52. SVM的核函数  
+    rbf, liner, sigmoid, poly   
+    ![avatar](pic/svm1.jpg)   
+    [参考](https://blog.csdn.net/bitcarmanlee/article/details/77604484)
 
 
 ## 损失函数   
