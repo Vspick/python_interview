@@ -19,7 +19,8 @@
 14. 新式类，旧式类 MRO问题 class.\_\_mro\_\_  super
     * [参考](http://python.jobbole.com/86787/)
 15. 鸭子类型 动态类型和静态类型 多态  
-16. 迭代器和生成器  \_\_iter\_\_, \_\_next\_\_, next(), iter(), for i in \[123\]发生了什么，yield, 生成器表达式(x*x for x in range(10))
+16. 迭代器和生成器  \_\_iter\_\_, \_\_next\_\_, next(), iter(), for i in \[123\]发生了什么，yield, 生成器表达式(x*x for x in range(10))   
+    [参考](http://python.jobbole.com/87805/)
 17. GIL线程全局锁 IO密集与计算密集  
 18. 协程，运行在一个线程，无锁，自己控制流程，中断，gevent在IO时自动切换  
 19. 深拷贝与浅拷贝  
