@@ -32,3 +32,21 @@ class Solution2(object):
         right = self.inorderTraversal(root.right)
 
         return left + [root.val] + right
+
+    # 非递归
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res = []
+        p = root
+        stack = []
+        while p or stack:
+            while p is not None:
+                stack.append(p)
+                p = p.left
+            p = stack.pop()
+            res.append(p.val)
+            p = p.right
+        return res
